@@ -2,19 +2,31 @@
 
 
 const express = require('express');
-const data = require('../artifacts/text');
+const bodyParser = require('body-parser');
+const routerTests = require('../src/routes/test-route');
+
 
 //atribuindo na const app o framework express
 const app = express();
-const router = express.Router();
+
+//setando o bodyParser
+app.use(bodyParser.json({
+  //limitando o JSON para até 5 mbs
+  limit: '5mb'
+}));
+
+// Habilita o CORS
+app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, x-access-token');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    next();
+});
+
+//para codificar a url
+app.use(bodyParser.urlencoded({extended: false}));
 
 
+app.use('/test', routerTests);
 
-router.get('/', (req, res, next) => {
-    //retornando um Json
-    res.status(200).send(data);
-  });
-  
-
-app.use(router);
 module.exports = app;
