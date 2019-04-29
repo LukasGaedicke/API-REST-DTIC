@@ -1,8 +1,7 @@
 'use strict'
-const express = require('express');
+const authService = require('../service/auth');
 
-
-exports.get = async() => {
+  exports.get = async() => {
     var res = await  require('../JsonForTests/textSucess');
     return res;
   }
@@ -17,4 +16,9 @@ exports.get = async() => {
   exports.getNotPattern = async() => {
     var res = await require('../JsonForTests/jsonNotPattern');
     return res;
+  }
+
+  exports.getNewToken = async() => {
+    const token = await authService.generateToken({name : 'teste'});
+  return token;
   }

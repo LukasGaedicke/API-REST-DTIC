@@ -4,10 +4,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const routerTests = require('../src/routes/test-route');
-
+const config = require('../config');
 
 //atribuindo na const app o framework express
 const app = express();
+var helmet = require('helmet');
 
 //setando o bodyParser
 app.use(bodyParser.json({
@@ -25,7 +26,8 @@ app.use(function (req, res, next) {
 
 //para codificar a url
 app.use(bodyParser.urlencoded({extended: false}));
-
+//helmet segurança 
+app.use(helmet());
 
 app.use('/test', routerTests);
 
