@@ -1,12 +1,12 @@
 'use strict'
 
-const app = require('../src/app');
+const app = require('../app');
 
 //importando modulos
 //expressando sem caminho, por padrao irá buscar na pasta node_modules
 const http = require('http');
 
-const port = 3001;
+const port = 3003;
 
 //sentado a porta do server
 app.set('port', port);
