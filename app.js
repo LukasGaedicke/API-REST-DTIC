@@ -5,7 +5,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const config = require('./config');
 const routerTests = require('./src/routes/test-route');
-const routerAluno = require('./src/routes/alunos-route');
+const routerGenerics = require('./src/routes/generics-route');
 const mongoose = require('mongoose');
 
 
@@ -38,5 +38,5 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(helmet());
 
 app.use('/test', routerTests);
-app.use('/alunos', routerAluno);
+app.use('/', routerGenerics);
 module.exports = app;

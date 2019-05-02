@@ -6,7 +6,7 @@ const app = require('../app');
 //expressando sem caminho, por padrao irá buscar na pasta node_modules
 const http = require('http');
 
-const port = 3003;
+const port = 3001;
 
 //sentado a porta do server
 app.set('port', port);
