@@ -21,13 +21,16 @@ exports.getHeaderAlunos = async (req, res, next) => {
 
 exports.getAlunos = async (req, res, next) => {
   try {
-    var quantidade = helperParse.parseTextToInt(req.query.quantidade);
-    if (quantidade != 0) {
-      var data = await repositoryGenerics.getDataGenerics(req.query.data, quantidade);
-      var test = { "data": data }
-      res.status(200).send(test);
+    var inicio = helperParse.parseTextToInt(req.query.inicio);
+    var fim = helperParse.parseTextToInt(req.query.fim);
+    if (inicio < fim) {
+      var data = req.query.data;
+      var limit = inicio - fim;
+      var response = await repositoryGenerics.getDataGenerics(data, inicio, limit);
+      res.status(200).send(response);
+
     } else {
-      throw new Error();
+      throw Error();
     }
 
   } catch (e) {
