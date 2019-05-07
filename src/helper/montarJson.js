@@ -5,5 +5,11 @@ module.exports = {
             "data": res,"totalRegistros": total
         }
         return data;
+    },
+    montarJsonHeader: function (res) {
+        var data = {
+            "data": res
+        }
+        return data;
     }
 }

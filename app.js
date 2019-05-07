@@ -9,14 +9,12 @@ const routerGenerics = require('./src/routes/generics-route');
 const mongoose = require('mongoose');
 
 
-
 //atribuindo na const app o framework express
 const app = express();
 var helmet = require('helmet');
 
 //passa o ip/link do mongoBD
 mongoose.connect(config.connString);
-
 
 //setando o bodyParser
 app.use(bodyParser.json({

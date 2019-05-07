@@ -13,7 +13,7 @@ exports.getHeaderAlunos = async (req, res, next) => {
     var data = await repositoryGenerics.getHeaderGenerics(req.query.data);
     res.status(200).send(data);
   } catch (e) {
-    res.status(500).send({
+    res.status(500).send(e, {
       message: 'Falha ao processar a requisição.'
     });
   }
@@ -23,15 +23,15 @@ exports.getAlunos = async (req, res, next) => {
   try {
     if (data != "") {
       var data = req.query.data;
-      var inicio = utilitarios.das(req.query.inicio);
-      var fim = utilitarios.das(req.query.fim);
+      var inicio = utilitarios.stringParaInt(req.query.start);
+      var fim = utilitarios.stringParaInt(req.query.length);
       var search = req.query.search;
 
       var requisiçãoDados = [data, inicio, fim, search];
       //var dadosFiltrados = filtro.getFiltrosDatatable(requisiçãoDados);
       
       if (validator.getVerificarInicioMenor(inicio, fim) != false) {
-        var response = await repositoryGenerics.getDataGenerics(data, inicio, utilitarios.getLimite(inicio, fim));
+        var response = await repositoryGenerics.getDataGenerics(data, inicio,fim);
         res.status(200).send(response);
       } else {
         throw Error();
