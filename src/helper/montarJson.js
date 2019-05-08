@@ -1,8 +1,8 @@
 module.exports = {
-    montarJson: function (res, total) {
+    montarJson: function (res, total, totalF) {
 
         var data = {
-            "data": res,"totalRegistros": total
+            "data": res,"recordsTotal": total, "recordsFiltered": totalF
         }
         return data;
     },

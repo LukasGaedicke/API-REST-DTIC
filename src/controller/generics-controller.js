@@ -10,11 +10,15 @@ const validator = require('../helper/validator');
 
 exports.getHeaderAlunos = async (req, res, next) => {
   try {
-    var data = await repositoryGenerics.getHeaderGenerics(req.query.data);
-    res.status(200).send(data);
+    if (data != "") {
+      var data = await repositoryGenerics.getHeaderGenerics(req.query.data);
+      res.status(200).send(data);
+    } else {
+      throw Error();
+    }
   } catch (e) {
-    res.status(500).send(e, {
-      message: 'Falha ao processar a requisição.'
+    res.status(500).send({
+      error: 'Falha ao processar a requisição.'
     });
   }
 };
@@ -26,23 +30,20 @@ exports.getAlunos = async (req, res, next) => {
       var inicio = utilitarios.stringParaInt(req.query.start);
       var fim = utilitarios.stringParaInt(req.query.length);
       var search = req.query.search;
-
-      var requisiçãoDados = [data, inicio, fim, search];
+      var requisiçãoDados = [data, inicio, fim, search[0]];
       //var dadosFiltrados = filtro.getFiltrosDatatable(requisiçãoDados);
-      
-      if (validator.getVerificarInicioMenor(inicio, fim) != false) {
-        var response = await repositoryGenerics.getDataGenerics(data, inicio,fim);
+
+     
+        var response = await repositoryGenerics.getDataGenerics(data, inicio, fim,search['value']);
         res.status(200).send(response);
-      } else {
-        throw Error();
-      }
+      
 
     } else {
       throw Error();
     }
   } catch (e) {
     res.status(500).send({
-      message: 'Falha ao processar a requisição.'
+      error: e
     });
   }
 };
