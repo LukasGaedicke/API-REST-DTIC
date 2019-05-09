@@ -15,9 +15,9 @@ exports.getHeaderGenerics = async (data) => {
     case "Alunos":
       var res = Header.findOne({ 'ref': data }, { __v: 0, _id: 0, ref: 0 });
       return res;
-    case 'Teste':
-      var res = Header.findOne({ 'ref': data }, { __v: 0, _id: 0 });
-      return res;
+    /*  case 'Teste':
+        var res = Header.findOne({ 'ref': data }, { __v: 0, _id: 0 });
+        return res;*/
     default:
       throw new Error();
   }
@@ -25,7 +25,32 @@ exports.getHeaderGenerics = async (data) => {
 
 }
 
-//headers
+exports.getDataGenerics = async (data, inicio, fim, search) => {
+  switch (data) {
+    case "Alunos":
+      if (search != "") {
+        return buscaComFiltro(inicio, fim, search);
+      } else {
+        return buscaSemFiltro(inicio, fim);
+      }
+    default:
+      throw new Error();
+  }
+  async function buscaComFiltro(inicio, fim, search) {
+    var res = await Alunos.find({ 'nome': new RegExp(search, 'i') }, { __v: 0, _id: 0 }).skip(inicio).limit(fim);
+    var totalF = await Alunos.find({ 'nome': new RegExp(search, 'i') }, { __v: 0, _id: 0 }).count();
+    var total = await Alunos.find({}).count();
+    var jsonMontado = helper.montarJson(res, total, totalF);
+    return jsonMontado;
+  }
+  async function buscaSemFiltro(inicio, fim) {
+    var res = await Alunos.find({}, { __v: 0, _id: 0 }).skip(inicio).limit(fim);
+    var total = await Alunos.find({}).count();
+    var jsonMontado = helper.montarJson(res, total, total);
+    return jsonMontado;
+  }
+
+}/*
 exports.getDataGenerics = async (data, inicio, fim, search) => {
   switch (data) {
     case "Alunos":
@@ -42,9 +67,9 @@ exports.getDataGenerics = async (data, inicio, fim, search) => {
         var jsonMontado = helper.montarJson(res, total,total);
         return jsonMontado;
       }
-      
+
     default:
       throw new Error();
   }
 
-}
+}*/ 
