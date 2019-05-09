@@ -33,11 +33,8 @@ exports.getAlunos = async (req, res, next) => {
       var requisiçãoDados = [data, inicio, fim, search[0]];
       //var dadosFiltrados = filtro.getFiltrosDatatable(requisiçãoDados);
 
-     
-        var response = await repositoryGenerics.getDataGenerics(data, inicio, fim,search['value']);
-        res.status(200).send(response);
-      
-
+      var response = await repositoryGenerics.getDataGenerics(data, inicio, fim, search['value']);
+      res.status(200).send(response);
     } else {
       throw Error();
     }
