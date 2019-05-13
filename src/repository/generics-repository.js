@@ -9,37 +9,32 @@ const MENUS = mongoose.model('Menu', { name: String });
 const helper = require('../helper/montarJson');
 
 
-exports.getHeaderGenerics = async (data) => {
-  switch (data) {
-    case "Alunos":
-      var res = Header.findOne({ 'ref': data }, { __v: 0, _id: 0, ref: 0 });
-      return res;
-    /*  case 'Teste':
-        var res = Header.findOne({ 'ref': data }, { __v: 0, _id: 0 });
-        return res;*/
-    default:
-      throw new Error();
+exports.getMenus = async (data) => {
+  var res = await MENUS.find({}, { __v: 0, _id: 0, ref: 0 , nome: 0 });
+  if (res != "") {
+    return helper.montarJsonMenu(res);
+  } else {
+    throw Error();
   }
 }
 
+exports.getHeaderGenerics = async (data) => {
+    var res = Header.findOne({ 'ref': data }, { __v: 0, _id: 0, ref: 0 });
+    //verificar retorno para vazio
+    return res;
+}
+
 exports.getDataGenerics = async (data, inicio, fim, search) => {
-  //QUANDO ELE CRIA A ENTIDADE, ELE COLOCA PARA PLURAL. EX-> TESTE fica TESTES, PLAY fica PLAYS
-  var GenericModel = null;
-  if (await verificarExistenciaModel(data) != false) {
-    try {
-      GenericModel = mongoose.model(data);
-    } catch (e) {
-      GenericModel = mongoose.model(data, { nome: String });
-    }
+  var GenericModel = await getModel(data);
+  if (GenericModel != null) {
     if (search != "") {
       return await buscaComFiltro(GenericModel, inicio, fim, search);
     } else {
       return await buscaSemFiltro(GenericModel, inicio, fim);
-    }  
+    }
   } else {
     throw Error("Essa entidade não existe.");
   }
-  
 }
 
 async function buscaComFiltro(MODEL, inicio, fim, search) {
@@ -56,13 +51,28 @@ async function buscaSemFiltro(MODEL, inicio, fim) {
   return jsonMontado;
 }
 
+async function getModel(data) {
+  //QUANDO MONGOOSE CRIA A ENTIDADE, ELE COLOCA PARA PLURAL. EX-> TESTE fica TESTES, PLAY fica PLAYS
+  var Model = null;
+  try {
+    Model = mongoose.model(data);
+    return Model;
+  } catch (e) {
+    if (await verificarExistenciaModel(data) != false) {
+      Model = mongoose.model(data, { nome: String });
+      return Model;
+    } else {
+      return Model;
+    }
+  }
+}
 
 async function verificarExistenciaModel(data) {
-  var res = await MENUS.find({ 'nome': data});
+  var res = await MENUS.find({ 'nome': data });
   if (res != "") {
-    return true; 
+    return true;
   } else {
-    return false; 
+    return false;
   }
 
 }
