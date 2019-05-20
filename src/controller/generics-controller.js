@@ -6,6 +6,8 @@ const utilitarios = require('../helper/utilitarios');
 const filtro = require('../helper/filtrar');
 const validator = require('../helper/validator');
 
+const helper = require('../helper/montarJson');
+
 exports.getMenus = async (req, res, next) => {
   try {
     var data = req.query.data;
@@ -27,7 +29,8 @@ exports.getHeaderAlunos = async (req, res, next) => {
     var data = req.query.data;
     if (data != "") {
       var header = await repositoryGenerics.getHeaderGenerics(data);
-      res.status(200).send(header);
+      var jsonMontado = helper.montarJsonHeader(header);
+      res.status(200).send(jsonMontado);
     } else {
       throw Error();
     }
@@ -46,9 +49,18 @@ exports.getAlunos = async (req, res, next) => {
       var fim = utilitarios.stringParaInt(req.query.length);
       var search = req.query.search;
       var requisiçãoDados = [data, inicio, fim, search[0]];
+
+      var order = req.query.order[0].column;
+      var nameCollumn = req.query.columns[order].data;
+      var ascOuDesc = req.query.order[0].dir;
+      
+      //console.log(nameCollumn);
+
+      //var columnValue = await repositoryGenerics.getColumnValue(data,column); 
+      
       //var dadosFiltrados = filtro.getFiltrosDatatable(requisiçãoDados);
 
-      var response = await repositoryGenerics.getDataGenerics(data, inicio, fim, search['value']);
+      var response = await repositoryGenerics.getDataGenerics(data, inicio, fim, search['value'],ascOuDesc, nameCollumn);
       res.status(200).send(response);
     } else {
       throw Error();

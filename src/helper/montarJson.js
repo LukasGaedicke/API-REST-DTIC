@@ -8,7 +8,7 @@ module.exports = {
     },
     montarJsonHeader: function (res) {
         var data = {
-            "data": res
+            "data": [res]
         }
         return data;
     },
