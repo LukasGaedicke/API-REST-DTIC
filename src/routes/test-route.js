@@ -5,7 +5,7 @@ const express = require('express');
 //instanciando as rotas do express
 const router  = express.Router();
 const controllerTest = require('../controller/test-controller');
-const authService = require('../service/auth');
+const authService = require('../services/auth');
 
 router.get('/', authService.authorize , controllerTest.get);
 router.get('/empty', controllerTest.getEmpty);

@@ -5,14 +5,17 @@ const mongoose = require('mongoose');
 
 const Header = mongoose.model('Header', { nome: String });
 const MENUS = mongoose.model('Menu', { nome: String });
+const Usuario = mongoose.model('Usuario', { usuario: String , senha : String, nome : String});
 //const Alunos = mongoose.model('Aluno', { name: String });
 const helper = require('../helper/montarJson');
 
 
-exports.getMenus = async (data) => {
+exports.getMenus = async () => {
   var res = await MENUS.find({}, { __v: 0, _id: 0, ref: 0 , nome: 0 });
+ 
+  
   if (res != "") {
-    return helper.montarJsonMenu(res);
+    return res;
   } else {
     throw Error();
   }
@@ -26,28 +29,29 @@ exports.getHeaderGenerics = async (data) => {
 }
 
 exports.getDataGenerics = async (data, inicio, fim, search,ascOuDesc, nameCollumn) => {
-  var GenericModel = await getModel(data);
+  const GenericModel = await getModel(data);
   if (GenericModel != null) {
+    
     if (search != "") {
       return await buscaComFiltro(GenericModel, inicio, fim, search,nameCollumn);
     } else {
       return await buscaSemFiltro(GenericModel, inicio, fim);
     }
   } else {
+    console.log("Essa entidade não existe.");
     throw Error("Essa entidade não existe.");
   }
 }
 
 async function buscaComFiltro(MODEL, inicio, fim, search, coluna) {
   
-  var xx = 'nome';
-  console.log(''+coluna+"das");
+  // coisa do mongoosse
+
+  console.log(coluna);
   console.log(search);
 
-
-  // coisa do mongoosse
-  var res = await MODEL.find( { 'nome' : new RegExp(search, 'i') }, { __v: 0, _id: 0 }).skip(inicio).limit(fim);
-  var totalF = await MODEL.find({ coluna : new RegExp(search, 'i') }, { __v: 0, _id: 0 }).count();
+  var res = await MODEL.find({},{ __v: 0, _id: 0 }).where(coluna, new RegExp(search, 'i')).skip(inicio).limit(fim);
+  var totalF = await MODEL.find( {}, { __v: 0, _id: 0 }).where(coluna, new RegExp(search, 'i')).count();
   var total = await MODEL.find({}).count();
   var jsonMontado = helper.montarJson(res, total, totalF);
   return jsonMontado;
@@ -60,6 +64,7 @@ async function buscaSemFiltro(MODEL, inicio, fim) {
 }
 
 async function getModel(data) {
+ 
   //QUANDO MONGOOSE CRIA A ENTIDADE, ELE COLOCA PARA PLURAL. EX-> TESTE fica TESTES, PLAY fica PLAYS
   var Model = null;
   try {
@@ -76,7 +81,7 @@ async function getModel(data) {
 }
 
 async function verificarExistenciaModel(data) {
-  var res = await MENUS.find({ 'nome': data });
+  var res = await Header.find({ 'ref': data });
   if (res != "") {
     return true;
   } else {
@@ -85,10 +90,3 @@ async function verificarExistenciaModel(data) {
 
 }
 
-
-exports.getColumnValue= async (data, column) => {
-  var res = await Header.findOne({ 'ref': data }, { __v: 0, _id: 0, ref: 0 });
-  var json = helper.montarJsonHeader(res);
-  console.log(json.data);
-  return res;
-}

@@ -1,5 +1,5 @@
 'use strict'
-const authService = require('../service/auth');
+const authService = require('../services/auth');
 
   exports.get = async() => {
     var res = await  require('../JsonForTests/textSucess');

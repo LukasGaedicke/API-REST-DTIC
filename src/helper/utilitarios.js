@@ -5,6 +5,13 @@ module.exports = {
     },
     getLimite: function (inicio, fim) {
         return inicio + fim;
+    },
+    isEmpty(obj) {
+        for(var key in obj) {
+            if(obj.hasOwnProperty(key))
+                return false;
+        }
+        return true;
     }
 }
 
