@@ -42,22 +42,15 @@ exports.getAlunos = async (req, res, next) => {
     var data = req.query.data;
     
     //if (utilitarios.isEmpty(data) != true) {
-      var inicio = utilitarios.stringParaInt(req.query.start);
-      var fim = utilitarios.stringParaInt(req.query.length);
-      var search = req.query.search;
-      //var requisiçãoDados = [data, inicio, fim, search[0]];
-
+      var start = utilitarios.stringParaInt(req.query.start);
+      var length = utilitarios.stringParaInt(req.query.length);
+      var searchValue = req.query.search;
+     
       var order = req.query.order[0].column;
       var nameCollumn = req.query.columns[order].data;
       var ascOuDesc = req.query.order[0].dir;
       
-
-
-      //var columnValue = await repositoryGenerics.getColumnValue(data,column); 
-      
-      //var dadosFiltrados = filtro.getFiltrosDatatable(requisiçãoDados);
-
-      var response = await repositoryGenerics.getDataGenerics(data, inicio, fim, search['value'],ascOuDesc, nameCollumn);
+      var response = await repositoryGenerics.getDataGenerics(data, start, length, searchValue['value'],ascOuDesc, nameCollumn);
       res.status(200).send(response);
     /*} else {
       throw Error();

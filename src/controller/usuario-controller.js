@@ -16,9 +16,8 @@ exports.authenticate = async (req, res, next) => {
             });
         }*/
         const usuario = await repositoryUsuario.autenticar(req.body.usuario, req.body.senha);
-        console.log(usuario);
         if (!usuario) {
-            res.status(404).send({
+            res.status(500).send({
                 error: 'Usuário ou senha inválidos'
             });
             return;
@@ -31,15 +30,11 @@ exports.authenticate = async (req, res, next) => {
             nome: usuario.nome,
             senha: usuario.senha
         });
-
-        console.log(usuario);
         res.status(200).send({
             nome: usuario.nome,
             token: token
 
         });
-
-
     } catch (e) {
        res.status(500).send({
             error: e
