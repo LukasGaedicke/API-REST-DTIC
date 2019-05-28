@@ -39,29 +39,31 @@ exports.getHeaderGenerics = async (data) => {
 exports.getDataGenerics = async (data, inicio, fim, search, ascOuDesc, nameCollumn) => {
   const GenericModel = await getModel(data);
   if (GenericModel != null) {
-
     if (search != "") {
-      return await buscaComFiltro(GenericModel, inicio, fim, search, nameCollumn,ascOuDesc);
+
+      return await buscaComFiltro(GenericModel, inicio, fim, search, nameCollumn, ascOuDesc, vetorDadosSelect);
     } else {
-      return await buscaSemFiltro(GenericModel, inicio, fim, ascOuDesc, nameCollumn);
+
+      var vetorDadosSelect = await montarConsultaComDadosHeader(GenericModel);
+      return await buscaSemFiltro(GenericModel, inicio, fim, ascOuDesc, nameCollumn, vetorDadosSelect);
     }
   } else {
     throw Error("Essa entidade não existe.");
   }
 }
 
-async function buscaComFiltro(MODEL, inicio, fim, search, nameCollumn,ascOuDesc ) {
+async function buscaComFiltro(MODEL, inicio, fim, search, nameCollumn, ascOuDesc, vetorData) {
 
   var montarJson = '{"' + nameCollumn + '":"' + ascOuDesc + '"}';
   var parseJsonSort = await parseJsonAsync(montarJson);
 
-  var res = await MODEL.find({ "nome": new RegExp(search, 'i') }, { __v: 0, _id: 0 })
+  var res = await MODEL.find({ "nome": new RegExp(search, 'i') }, vetorData, { projection: { __v: 0, _id: 0 } })
     .sort(parseJsonSort)
     .skip(inicio)
     .limit(fim);
 
 
-  var totalF = await MODEL.find({ "nome": new RegExp(search, 'i') }, { __v: 0, _id: 0 })
+  var totalF = await MODEL.find({ "nome": new RegExp(search, 'i') })
     .count();
 
   var total = await MODEL.find({})
@@ -71,20 +73,17 @@ async function buscaComFiltro(MODEL, inicio, fim, search, nameCollumn,ascOuDesc 
   return jsonMontado;
 }
 
-
-async function buscaSemFiltro(MODEL, inicio, fim, ascOuDesc, nameCollumn) {
+async function buscaSemFiltro(MODEL, inicio, fim, ascOuDesc, nameCollumn, vetorData) {
 
   var montarJson = '{"' + nameCollumn + '":"' + ascOuDesc + '"}';
   var parseJsonSort = await parseJsonAsync(montarJson);
 
-  var res = await MODEL.find({}, { __v: 0, _id: 0 })
+  var res = await MODEL.find({}, vetorData, { projection: { __v: 0, _id: 0 } })
     .sort(parseJsonSort)
     .skip(inicio)
     .limit(fim);
 
-  var total = await MODEL.find({})
-    .sort(parseJsonSort)
-    .count();
+  var total = await MODEL.find({}).count();
 
   var jsonMontado = helper.montarJson(res, total, total);
   return jsonMontado;
@@ -118,3 +117,20 @@ async function verificarExistenciaModel(data) {
 
 }
 
+
+async function montarConsultaComDadosHeader(MODEL) {
+
+  var vetorData = [];
+  var qual = await Header.findOne({ 'ref': MODEL }, { __v: 0, _id: 0, ref: 0 });
+  var xx = helper.montarJsonHeader(qual);
+
+  var cc = Object.keys(xx.data[0].toJSON());
+
+  let i = 0;
+  for (const x in cc) {
+    vetorData[i] = cc[i];
+    i++;
+  }
+
+  return vetorData;
+}
