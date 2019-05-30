@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const Header = mongoose.model('Header', { nome: String });
 const MENUS = mongoose.model('Menu', { nome: String });
 const Usuario = mongoose.model('Usuario', { usuario: String, senha: String, nome: String });
-//const Alunos = mongoose.model('Aluno', { name: String });
 const helper = require('../helper/montarJson');
 const utils = require('../helper/utilitarios');
 
@@ -21,7 +20,7 @@ const parseJsonAsync = (jsonString) => {
 
 
 exports.getMenus = async () => {
-  var res = await MENUS.find({}, { __v: 0, _id: 0, ref: 0, nome: 0 });
+  var res = await MENUS.find({}, { __v: 0, _id: 0, tabelaReferencia: 0, nome: 0 });
   if (res != "") {
     return res;
   } else {
@@ -30,7 +29,7 @@ exports.getMenus = async () => {
 }
 
 exports.getHeaderGenerics = async (data) => {
-  var res = await Header.findOne({ 'ref': data }, { __v: 0, _id: 0, ref: 0 });
+  var res = await Header.findOne({ 'tabelaReferencia': data }, { __v: 0, _id: 0, tabelaReferencia: 0 });
   //verificar retorno para vazio
   //console.log(res);
   return res;
@@ -40,7 +39,7 @@ exports.getDataGenerics = async (data, inicio, fim, search, ascOuDesc, nameCollu
   const GenericModel = await getModel(data);
   if (GenericModel != null) {
     if (search != "") {
-
+      var vetorDadosSelect = await montarConsultaComDadosHeader(GenericModel);
       return await buscaComFiltro(GenericModel, inicio, fim, search, nameCollumn, ascOuDesc, vetorDadosSelect);
     } else {
 
@@ -57,7 +56,24 @@ async function buscaComFiltro(MODEL, inicio, fim, search, nameCollumn, ascOuDesc
   var montarJson = '{"' + nameCollumn + '":"' + ascOuDesc + '"}';
   var parseJsonSort = await parseJsonAsync(montarJson);
 
-  var res = await MODEL.find({ "nome": new RegExp(search, 'i') }, vetorData, { projection: { __v: 0, _id: 0 } })
+
+  var xesque = [];
+  
+
+  //{ "ano_ingresso" : /.*20*./i }
+
+  let i = 0;
+  for (const x in vetorData) {
+    
+   // var c = vetorData[i].toString();
+   var cx   = '{"' + vetorData[i] + '": "ca"}'; 
+   var c = await parseJsonAsync(cx);
+   c[''+vetorData[i]+''] =  new RegExp(search, 'i');
+   xesque[i] = c;
+    i++;
+  }
+
+  var res = await MODEL.find({ $or: xesque } , vetorData, { projection: { __v: 0, _id: 0 } })
     .sort(parseJsonSort)
     .skip(inicio)
     .limit(fim);
@@ -108,7 +124,7 @@ async function getModel(data) {
 }
 
 async function verificarExistenciaModel(data) {
-  var res = await Header.find({ 'ref': data });
+  var res = await Header.find({ 'tabelaReferencia': data });
   if (res != "") {
     return true;
   } else {
@@ -121,14 +137,14 @@ async function verificarExistenciaModel(data) {
 async function montarConsultaComDadosHeader(MODEL) {
 
   var vetorData = [];
-  var qual = await Header.findOne({ 'ref': MODEL }, { __v: 0, _id: 0, ref: 0 });
+  var qual = await Header.findOne({ 'tabelaReferencia': MODEL }, { __v: 0, _id: 0, tabelaReferencia: 0 });
   var xx = helper.montarJsonHeader(qual);
 
-  var cc = Object.keys(xx.data[0].toJSON());
+  var keysDoJsonHeader = Object.keys(xx.data[0].toJSON());
 
   let i = 0;
-  for (const x in cc) {
-    vetorData[i] = cc[i];
+  for (const x in keysDoJsonHeader) {
+    vetorData[i] = keysDoJsonHeader[i];
     i++;
   }
 
