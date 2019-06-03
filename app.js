@@ -4,7 +4,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const config = require('./config');
-const routerTests = require('./src/routes/test-route');
 const routerGenerics = require('./src/routes/generics-route');
 const mongoose = require('mongoose');
 
@@ -35,6 +34,5 @@ app.use(bodyParser.urlencoded({extended: false}));
 //helmet segurança 
 app.use(helmet());
 
-app.use('/test', routerTests);
 app.use('/', routerGenerics);
 module.exports = app;

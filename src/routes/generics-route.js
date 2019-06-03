@@ -9,12 +9,14 @@ const controllerUsuario = require('../controller/usuario-controller');
 
 const authService = require('../services/auth');
 
-router.get('/menu', authService.authorize, controllerAluno.getMenus);
-router.get('/header',  authService.authorize, controllerAluno.getHeaderAlunos);
-router.get('/',   controllerAluno.getAlunos);
+router.get('/menu', authService.authorizeNoBanco, controllerAluno.getMenus);
+router.get('/header',  authService.authorizeNoBanco, controllerAluno.getHeaderAlunos);
+router.get('/',   authService.authorizeNoBanco, controllerAluno.getAlunos);
+router.get('/graficos',  authService.authorizeNoBanco, controllerAluno.getGraficos);
 
 
 
 router.post('/login',  controllerUsuario.authenticate);
-router.post('/refresh-token', authService.authorize, controllerUsuario.refreshToken);
+router.get('/logout',  authService.authorizeNoBanco, controllerUsuario.logout);
+
 module.exports = router;

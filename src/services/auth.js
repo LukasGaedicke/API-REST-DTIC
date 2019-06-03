@@ -1,8 +1,9 @@
 'use strict';
 const jwt = require('jsonwebtoken');
+const repositoryUsuario = require('../repository/usuario-repository');
 
 exports.generateToken = async (data) => {
-    return jwt.sign(data, global.SALT_KEY, { expiresIn: '1d' });
+    return jwt.sign(data, global.SALT_KEY, { expiresIn: '1y'});
 }
 
 exports.decodeToken = async (token) => {
@@ -30,29 +31,15 @@ exports.authorize = function (req, res, next) {
     }
 };
 
-exports.isAdmin = function (req, res, next) {
+exports.authorizeNoBanco = async function (req, res, next) {
     var token = req.body.token || req.query.token || req.headers['x-access-token'];
-
-    if (!token) {
+    var retornoToken = await repositoryUsuario.verificarToken(token);
+    if (retornoToken == null) {
         res.status(401).json({
             message: 'Token Inválido'
         });
     } else {
-        jwt.verify(token, global.SALT_KEY, function (error, decoded) {
-            if (error) {
-                res.status(401).json({
-                    message: 'Token Inválido'
-                });
-            } else {
-                //if (decoded.roles.includes('admin')) {
-                if (req.body.token == 'admin') {
-                    next();
-                } else {
-                    res.status(403).json({
-                        message: 'Esta funcionalidade é restrita para administradores'
-                    });
-                }
-            }
-        });
+        next();
     }
+    
 };

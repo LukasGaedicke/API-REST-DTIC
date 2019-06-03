@@ -1,8 +1,8 @@
 module.exports = {
-    montarJson: function (res, total, totalF) {
+    montarJson: function (vetor) {
 
         var data = {
-            "data": res,"recordsTotal": total, "recordsFiltered": totalF
+            "data": vetor[0],"recordsTotal": vetor[1], "recordsFiltered": vetor[2]
         }
         return data;
     },
@@ -15,5 +15,12 @@ module.exports = {
     montarJsonMenu: function (res) {
         
         return data;
+    },
+    montarJsonGrafico: function (res) {
+        var data = {
+            "data": res
+        }
+        return data;
     }
+
 }
