@@ -34,9 +34,20 @@ Tutorial of installation in: https://nodesource.com/blog/installing-node-js-tuto
 ```
 
 
-```
+* Urls da API:
+/menu -- Retorna o menu do mongoDB.
+Exemplo: 
+/header -- Retorna o cabeçalho do dado específico
+Exemplo:
+/ -- Retorna todos os dados de um dado específico
+Exemplo:
+/graficos -- Retorna os dados de um gráfico específico
+Exemplo:
+/login -- Login do usuario.
+Exemplo:
+/logout -- Saída do sistema.
+Exemplo: 
 
-### Usando a aplicação: ###
 
-Bugs? Create one [issue](https://github.com/LukasGaedicke/user_control/issues), or collaborate, Enjoy! 
+
 
