@@ -1,6 +1,10 @@
 # API-REST-DTIC
 
 ## Visão geral ##
+API REST construida com NodeJS. Em linhas gerais a API retorna todos os dados que estão em uma colletions. 
+
+Para fazer isso basta criar um cabeçalho na colletion header informando o nome da colletion que contém os dados, e os dados de cabeçalho a serem exibidos. 
+
 
 ### Passos para o uso da API: ###
 
