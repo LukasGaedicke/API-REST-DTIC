@@ -5,6 +5,25 @@ API REST construida com NodeJS. Em linhas gerais a API retorna todos os dados qu
 
 Para fazer isso basta criar um cabeçalho na colletion header informando o nome da colletion que contém os dados, e os dados de cabeçalho a serem exibidos. 
 
+colletion: headers
+
+chaves: 
+
+Imagem 
+
+colletion que contém os dados: alunos
+
+chaves: 
+
+Imagem 
+
+Para os gŕaficos é a mesma coisa: 
+
+
+E o menu, é um registro fixo no mongodb. 
+
+
+
 
 ### Passos para o uso da API: ###
 
