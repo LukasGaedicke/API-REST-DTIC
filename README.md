@@ -5,33 +5,12 @@ API REST construida com NodeJS. Em linhas gerais a API retorna todos os dados qu
 
 Para fazer isso basta criar um cabeçalho na colletion header informando o nome da colletion que contém os dados, e os dados de cabeçalho a serem exibidos. 
 
-colletion: headers
-
-chaves: 
-
-Imagem 
-
-colletion que contém os dados: alunos
-
-chaves: 
-
-Imagem 
-
-Para os gŕaficos é a mesma coisa: 
-
-
-E o menu, é um registro fixo no mongodb. 
-
-
-
-
 ### Passos para o uso da API: ###
 
 * Instalar mongodb:
 ```bash
-Tutorial of installation in: https://www.digitalocean.com/community/tutorials/how-to-install-mysql-on-ubuntu-16-04
 
-Coleções e campos obrigatórios para o funcinamento da API: 
+Coleções e campos obrigatórios no mongo para o funcinamento da API: 
 -graficos
   - referencia
 -headers
@@ -44,18 +23,6 @@ Coleções e campos obrigatórios para o funcinamento da API:
   -token
   
 ```
-
-* Instalar NodeJS:
-```bash
-Tutorial of installation in: https://nodesource.com/blog/installing-node-js-tutorial-ubuntu/
-```
-
-* Instalar as dependências do projeto:
-```bash
->cd ~/workspace
->npm install 
-```
-
 
 1. Urls da API:
   - /menu -- Retorna o menu do mongoDB.
