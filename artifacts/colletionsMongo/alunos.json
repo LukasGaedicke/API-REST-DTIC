@@ -1,0 +1,320 @@
+{ 
+    "_id" : ObjectId("5cc89b6605a5ed13c65542c2"), 
+    "nome" : "Carina", 
+    "matricula" : "115540", 
+    "curso" : "ET", 
+    "ano_ingresso" : "2016", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8aa0d05a5ed1ef57a0000"), 
+    "nome" : "João", 
+    "matricula" : "145708", 
+    "curso" : "EA", 
+    "ano_ingresso" : "2010", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8aa1105a5ed1ef57a0001"), 
+    "nome" : "Matias", 
+    "matricula" : "654789", 
+    "curso" : "ES", 
+    "ano_ingresso" : "2017", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ab7b05a5ed1ef57a000a"), 
+    "nome" : "Joana", 
+    "matricula" : "166203", 
+    "curso" : "", 
+    "ano_ingresso" : "2011", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ab8f05a5ed1ef57a000d"), 
+    "nome" : "Nicole", 
+    "matricula" : "280180", 
+    "curso" : "ES", 
+    "ano_ingresso" : "2013", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8abf805a5ed1ef57a0016"), 
+    "nome" : "Jurema", 
+    "matricula" : "123445", 
+    "curso" : "CC", 
+    "ano_ingresso" : "2012", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8abff05a5ed1ef57a0017"), 
+    "nome" : "Leônidas", 
+    "matricula" : "534687", 
+    "curso" : "EE", 
+    "ano_ingresso" : "2018", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac0505a5ed1ef57a0018"), 
+    "nome" : "Nicolas", 
+    "matricula" : "123445", 
+    "curso" : "CC", 
+    "ano_ingresso" : "2011", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac0e05a5ed1ef57a0019"), 
+    "nome" : "Zulmira", 
+    "matricula" : "654789", 
+    "curso" : "ES", 
+    "ano_ingresso" : "2017", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac1205a5ed1ef57a001a"), 
+    "nome" : "Zoraide", 
+    "matricula" : "543121", 
+    "curso" : "EA", 
+    "ano_ingresso" : "2011", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac1905a5ed1ef57a001b"), 
+    "nome" : "Vivaldo", 
+    "matricula" : "610320", 
+    "curso" : "EE", 
+    "ano_ingresso" : "2018", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac2405a5ed1ef57a001c"), 
+    "nome" : "Siquenique", 
+    "matricula" : "890250", 
+    "curso" : "ES", 
+    "ano_ingresso" : "2011", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac2b05a5ed1ef57a001d"), 
+    "nome" : "Ibijara", 
+    "matricula" : "654789", 
+    "curso" : "ET", 
+    "ano_ingresso" : "2019", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac3005a5ed1ef57a001e"), 
+    "nome" : "Tadeu", 
+    "matricula" : "123445", 
+    "curso" : "ES", 
+    "ano_ingresso" : "2011", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac3705a5ed1ef57a001f"), 
+    "nome" : "Tiago", 
+    "matricula" : "654789", 
+    "curso" : "EE", 
+    "ano_ingresso" : "2014", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac3b05a5ed1ef57a0020"), 
+    "nome" : "Gertrudes", 
+    "matricula" : "449149", 
+    "curso" : "EM", 
+    "ano_ingresso" : "2011", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac4005a5ed1ef57a0021"), 
+    "nome" : "Jesus", 
+    "matricula" : "654789", 
+    "curso" : "ES", 
+    "ano_ingresso" : "2018", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac4505a5ed1ef57a0022"), 
+    "nome" : "Mattos", 
+    "matricula" : "123445", 
+    "curso" : "EE", 
+    "ano_ingresso" : "2017", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac4a05a5ed1ef57a0023"), 
+    "nome" : "Zubaida", 
+    "matricula" : "654789", 
+    "curso" : "ES", 
+    "ano_ingresso" : "2016", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac5305a5ed1ef57a0024"), 
+    "nome" : "Ramírez", 
+    "matricula" : "123445", 
+    "curso" : "CC", 
+    "ano_ingresso" : "2016", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac5705a5ed1ef57a0025"), 
+    "nome" : "Mourão", 
+    "matricula" : "654789", 
+    "curso" : "ES", 
+    "ano_ingresso" : "2016", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac5d05a5ed1ef57a0026"), 
+    "nome" : "Fernando", 
+    "matricula" : "123445", 
+    "curso" : "EA", 
+    "ano_ingresso" : "2011", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac6205a5ed1ef57a0027"), 
+    "nome" : "Catarina", 
+    "matricula" : "654789", 
+    "curso" : "EE", 
+    "ano_ingresso" : "2014", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac6905a5ed1ef57a0028"), 
+    "nome" : "Gaspar", 
+    "matricula" : "123445", 
+    "curso" : "ES", 
+    "ano_ingresso" : "2014", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac7705a5ed1ef57a0029"), 
+    "nome" : "Gabriel", 
+    "matricula" : "654789", 
+    "curso" : "EA", 
+    "ano_ingresso" : "2006", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac8105a5ed1ef57a002a"), 
+    "nome" : "Lameirinhas", 
+    "matricula" : "545669", 
+    "curso" : "CC", 
+    "ano_ingresso" : "2017", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac8705a5ed1ef57a002b"), 
+    "nome" : "Veridiano", 
+    "matricula" : "370755", 
+    "curso" : "EE", 
+    "ano_ingresso" : "2011", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac8c05a5ed1ef57a002c"), 
+    "nome" : "Lins", 
+    "matricula" : "123445", 
+    "curso" : "EM", 
+    "ano_ingresso" : "2014", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac9205a5ed1ef57a002d"), 
+    "nome" : "Proença", 
+    "matricula" : "280180", 
+    "curso" : "CC", 
+    "ano_ingresso" : "2018", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac9905a5ed1ef57a002e"), 
+    "nome" : "Ornellas", 
+    "matricula" : "280180", 
+    "curso" : "EM", 
+    "ano_ingresso" : "2018", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8ac9f05a5ed1ef57a002f"), 
+    "nome" : "Resende", 
+    "matricula" : "654789", 
+    "curso" : "EA", 
+    "ano_ingresso" : "2016", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8aca405a5ed1ef57a0030"), 
+    "nome" : "Briones", 
+    "matricula" : "654789", 
+    "curso" : "ES", 
+    "ano_ingresso" : "2015", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8acab05a5ed1ef57a0031"), 
+    "nome" : "Hipólito", 
+    "matricula" : "361082", 
+    "curso" : "EM", 
+    "ano_ingresso" : "2017", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8acb105a5ed1ef57a0032"), 
+    "nome" : "Zuleica", 
+    "matricula" : "123445", 
+    "curso" : "ES", 
+    "ano_ingresso" : "2011", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8acb505a5ed1ef57a0033"), 
+    "nome" : "Érica", 
+    "matricula" : "2540180", 
+    "curso" : "CC", 
+    "ano_ingresso" : "2014", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8acbf05a5ed1ef57a0034"), 
+    "nome" : "Tamoio", 
+    "matricula" : "123445", 
+    "curso" : "ES", 
+    "ano_ingresso" : "2011", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8acc605a5ed1ef57a0035"), 
+    "nome" : "Helena", 
+    "matricula" : "654789", 
+    "curso" : "ET", 
+    "ano_ingresso" : "2018", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8accb05a5ed1ef57a0036"), 
+    "nome" : "Judite", 
+    "matricula" : "123445", 
+    "curso" : "EM", 
+    "ano_ingresso" : "2011", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8acd205a5ed1ef57a0037"), 
+    "nome" : "Guido", 
+    "matricula" : "123445", 
+    "curso" : "ES", 
+    "ano_ingresso" : "2014", 
+    "__v" : NumberInt(0)
+}
+{ 
+    "_id" : ObjectId("5cc8acdf05a5ed1ef57a0038"), 
+    "nome" : "Ema", 
+    "matricula" : "654789", 
+    "curso" : "ET", 
+    "ano_ingresso" : "2016", 
+    "__v" : NumberInt(0)
+}

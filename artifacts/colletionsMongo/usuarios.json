@@ -1,0 +1,14 @@
+{ 
+    "_id" : ObjectId("5ce6cd0405a5ed11a23639c4"), 
+    "usuario" : "admin", 
+    "senha" : "admin", 
+    "nome" : "Gandalf, the gray.", 
+    "token" : "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVjZTZjZDA0MDVhNWVkMTFhMjM2MzljNCIsInVzdWFyaW8iOiJhZG1pbiIsIm5vbWUiOiJHYW5kYWxmLCB0aGUgZ3JheS4iLCJzZW5oYSI6ImFkbWluIiwiaWF0IjoxNTU5NjU2NzkyLCJleHAiOjE1OTEyMTQzOTJ9.8MFFdakcCvr52zrYmkw9XX_uXzLfB1EHuMRjAkn2JIE"
+}
+{ 
+    "_id" : ObjectId("5cf56f3205a5ed26470402eb"), 
+    "usuario" : "123", 
+    "senha" : "123", 
+    "nome" : "Sauron", 
+    "token" : ""
+}

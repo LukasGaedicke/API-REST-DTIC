@@ -1,0 +1,8 @@
+{ 
+    "_id" : ObjectId("5cf019ed05a5ed190818a4d5"), 
+    "tabelaReferencia" : "alunos", 
+    "nome" : "Nome", 
+    "matricula" : "Matricula", 
+    "curso" : "Curso", 
+    "ano_ingresso" : "Ano de ingresso"
+}

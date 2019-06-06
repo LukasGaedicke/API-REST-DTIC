@@ -1,0 +1,45 @@
+{ 
+    "_id" : ObjectId("5ce6fe2305a5ed1a154083a4"), 
+    "menu" : [
+        {
+            "type" : "menu_item", 
+            "class" : "btnDataTable", 
+            "nome_menu_item" : "DataTable", 
+            "data_url_cabecalho" : "http://10.12.4.95:3001/header?data=alunos", 
+            "data_url_dados" : "http://10.12.4.95:3001/?data=alunos", 
+            "class_icone" : "fa fa-table"
+        }, 
+        {
+            "type" : "menu_item", 
+            "class" : "btnJsChart", 
+            "nome_menu_item" : "Gráficos", 
+            "data_url_cabecalho" : "", 
+            "data_url_dados" : "http://10.12.4.95:3001/graficos?data=meses", 
+            "class_icone" : "fa fa-bar-chart", 
+            "charttype" : "barra"
+        }, 
+        {
+            "type" : "sub_menu", 
+            "sub_menu_name" : "Administrativo", 
+            "sub_itens" : [
+                {
+                    "type" : "menu_item", 
+                    "class" : "btnDataTable", 
+                    "nome_menu_item" : "DataTable", 
+                    "data_url_cabecalho" : "http://10.12.4.95:3001/header?data=alunos", 
+                    "data_url_dados" : "http://10.12.4.95:3001/?data=alunos", 
+                    "class_icone" : "fa fa-table"
+                }, 
+                {
+                    "type" : "menu_item", 
+                    "class" : "btnJsChart", 
+                    "nome_menu_item" : "Gráficos", 
+                    "data_url_cabecalho" : "", 
+                    "data_url_dados" : "http://10.12.4.95:3001/graficos?data=linguagens", 
+                    "class_icone" : "fa fa-bar-chart", 
+                    "charttype" : "pizza"
+                }
+            ]
+        }
+    ]
+}
