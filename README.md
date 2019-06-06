@@ -14,7 +14,7 @@ Para fazer isso basta criar um cabeçalho na colletion header informando o nome 
 * Baixar projeto do repositório; 
 * Ir no diretório de dar um npm -install; 
 ```bash
-
+Na pasta /artifacts/colletionsMongo tem as colletion utilizadas; 
 Coleções e campos obrigatórios no mongo para o funcinamento da API: 
 -graficos
   - referencia
