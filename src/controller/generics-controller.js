@@ -21,7 +21,7 @@ exports.getMenus = async (req, res, next) => {
   }
 };
 
-exports.getHeaderAlunos = async (req, res, next) => {
+exports.getHeader = async (req, res, next) => {
   try {
     var data = req.query.data;
 
@@ -44,7 +44,7 @@ exports.getHeaderAlunos = async (req, res, next) => {
   }
 };
 
-exports.getAlunos = async (req, res, next) => {
+exports.getData = async (req, res, next) => {
   try {
     var data = req.query.data;
 
@@ -57,7 +57,8 @@ exports.getAlunos = async (req, res, next) => {
       var nameCollumn = req.query.columns[order].data;
       var ascOuDesc = req.query.order[0].dir;
 
-      var response = await repositoryGenerics.getDataGenerics(data, start, length, searchValue['value'], ascOuDesc, nameCollumn);
+      var vetorHeader = await repositoryGenerics.getNomeHeaders(data);
+      var response = await repositoryGenerics.getDataGenerics(data, start, length, searchValue['value'], ascOuDesc, nameCollumn, vetorHeader);
 
       if (response[0] != null && response[1] != null && response[2] != null) {
         res.status(200).send(helper.montarJson(response));
@@ -75,6 +76,9 @@ exports.getAlunos = async (req, res, next) => {
     });
   }
 };
+
+
+
 
 
 exports.getGraficos = async (req, res, next) => {

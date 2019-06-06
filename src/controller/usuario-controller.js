@@ -38,8 +38,7 @@ exports.authenticate = async (req, res, next) => {
         var token = await authService.generateToken({
             id: usuario._id,
             usuario: usuario.usuario,
-            nome: usuario.nome,
-            senha: usuario.senha
+            nome: usuario.nome
         });
 
         var saveToken = await repositoryUsuario.cadastrarToken(usuario._id, token);

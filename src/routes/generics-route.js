@@ -10,8 +10,8 @@ const controllerUsuario = require('../controller/usuario-controller');
 const authService = require('../services/auth');
 
 router.get('/menu', authService.authorizeNoBanco, controllerAluno.getMenus);
-router.get('/header',  authService.authorizeNoBanco, controllerAluno.getHeaderAlunos);
-router.get('/',   authService.authorizeNoBanco, controllerAluno.getAlunos);
+router.get('/header',  authService.authorizeNoBanco, controllerAluno.getHeader);
+router.get('/',   authService.authorizeNoBanco, controllerAluno.getData);
 router.get('/graficos',  authService.authorizeNoBanco, controllerAluno.getGraficos);
 
 

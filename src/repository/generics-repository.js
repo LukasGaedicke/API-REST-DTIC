@@ -49,21 +49,23 @@ exports.getHeaderGenerics = async (data) => {
   return res;
 }
 
-exports.getDataGenerics = async (data, inicio, fim, search, ascOuDesc, nameCollumn) => {
+exports.getDataGenerics = async (data, inicio, fim, search, ascOuDesc, nameCollumn, vetorDadosSelect) => {
   const GenericModel = await getModel(data);
   if (GenericModel != null) {
     if (search != "") {
-      var vetorDadosSelect = await getNomeHeaders(GenericModel);
+     
       return await buscaComFiltro(GenericModel, inicio, fim, search, nameCollumn, ascOuDesc, vetorDadosSelect);
     } else {
 
-      var vetorDadosSelect = await getNomeHeaders(GenericModel);
+
       return await buscaSemFiltro(GenericModel, inicio, fim, ascOuDesc, nameCollumn, vetorDadosSelect);
     }
   } else {
     throw Error("Essa entidade não existe.");
   }
 }
+
+
 async function montarVetorJsonConsultaFiltro(vetorHeaders, searchValue) {
   var vetorHeadersInJson = [];
 
@@ -149,7 +151,8 @@ async function verificarExistenciaModel(data) {
 }
 
 
-async function getNomeHeaders(MODEL) {
+
+exports.getNomeHeaders = async (MODEL) => {
 
   var vetorHeaders = [];
   var headers = await Header.findOne({ 'tabelaReferencia': MODEL }, { __v: 0, _id: 0, tabelaReferencia: 0 });
@@ -165,4 +168,3 @@ async function getNomeHeaders(MODEL) {
   // RETORNO EXEMPLO: Keys de um header de aluno -- [ 'nome', 'matricula', 'curso', 'ano_ingresso' ]
   return vetorHeaders;
 }
-
