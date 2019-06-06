@@ -5,9 +5,14 @@ API REST construida com NodeJS. Em linhas gerais a API retorna todos os dados qu
 
 Para fazer isso basta criar um cabeçalho na colletion header informando o nome da colletion que contém os dados, e os dados de cabeçalho a serem exibidos. 
 
+![process](https://github.com/LukasGaedicke/API-REST-DTIC/blob/master/artifacts/others/process.png)
+
 ### Passos para o uso da API: ###
 
-* Instalar mongodb:
+* Instalar mongodb;
+* Instalar nodejs;
+* Baixar projeto do repositório; 
+* Ir no diretório de dar um npm -install; 
 ```bash
 
 Coleções e campos obrigatórios no mongo para o funcinamento da API: 
